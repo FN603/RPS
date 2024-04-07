@@ -7,40 +7,48 @@
 </head>
 <body>
     <script>
-        const selections = ["ROCK", "PAPER", "SCISSORS"];
-
+        
         let playerScore = 0;
         let computerScore = 0;
         
         function getComputerChoice() {
-            let randomnumber = selections[Math.floor(Math.random() * selections.length)];
+            let randomNumber = Math.floor(Math.random() * 3)
+              switch (randomNumber) {
+                case 0:
+                    return 'ROCK'
+                case 1:
+                    return 'PAPER'
+                case 2:
+                    return 'SCISSORS'
+                }
+
         }
-       getComputerChoice();
+
 
        function playRound() {
         let playerSelection = prompt("Who will be your chosen denfender? Rock? Paper? Or maybe Scissors?").toUpperCase();
        console.log("You have chosen " + playerSelection)
-        if (playerSelection == getComputerChoice) {
-        console.log("It's a tie!");
-    } else if (playerSelection == "ROCK" && getComputerChoice == "SCISSORS") {
-        console.log("You win! Rock beats scissors");
-        playerScore++;
-    } else if (playerSelection == "ROCK" && getComputerChoice == "PAPER") {
-        console.log("You lose :( Paper beats rock");
-        computerScore++;
-    } else if (playerSelection == "SCISSORS" && getComputerChoice == "PAPER") {
-        console.log("You win! Scissors beats paper");
-        playerScore++;
-    } else if (playerSelection == "SCISSORS" && getComputerChoice == "ROCK") {
-        console.log("You lose :( Rock beats scissors");
-        computerScore++;
-    } else if (playerSelection == "PAPER" && getComputerChoice == "ROCK") {
-        console.log("You win! Paper beats rock");
-        playerScore++;
-    } else if (playerSelection == "PAPER" && getComputerChoice == "SCISSORS") {
-        console.log("You lose :( Scissors beats paper");
-        computerScore++;
-    }   
+       let computerSelection = getComputerChoice()
+       console.log(`the enemy has chosen ${computerSelection}`)
+       if (playerSelection === computerSelection) {
+        console.log(`The champions known as ${playerSelection} have fallen together ending in a tie`)
+        }
+        if (
+            (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
+            (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
+            (playerSelection === 'PAPER' && computerSelection === 'ROCK')
+        ) {
+            playerScore += 1;
+            console.log(`Your  ${playerSelection} annihilates ${computerSelection}!`)
+        }
+        if (
+            (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
+            (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
+            (computerSelection === 'PAPER' && playerSelection === 'ROCK')
+        ) {
+            computerScore += 1;
+            console.log(`Your champion ${playerSelection} has failed to beat ${computerSelection}!`)
+        }
         console.log("Player: " + playerScore)
         console.log("Computer: " + computerScore)
        }
@@ -55,7 +63,7 @@
         if (playerScore > computerScore) {
             console.log("YOU WIN!")
         } else if (computerScore > playerScore) {
-            console.log("Youu have failed to beat the computer.")
+            console.log("You have failed to beat the computer.")
         } else if (playerScore == computerScore) {
             console.log("The game ends in a stalemate.")
         }
