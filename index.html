@@ -4,71 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <script src="js/index.js" defer></script>
 </head>
 <body>
-    <script>
+<div id="result"></div>
+    <p id="roundWinner">Choose Your Fighter!</p>
+    <p id="winner"></p>
+    <p id="playerScore">Player: 0 Computer: 0</p>
+    <p id="playerChoice">You Picked: </p>
+    <p id="computerChoice">Computer Picked: </p>
+<div id="choice">
+    <button id="SCISSORS">Scissors</button>
+    <button id="ROCK">Rock</button>
+    <button id="PAPER">Paper</button>
+        <!-- <div id="container"></div> -->
+</div>
+<div id="container"></div>
         
-        let playerScore = 0;
-        let computerScore = 0;
-        
-        function getComputerChoice() {
-            let randomNumber = Math.floor(Math.random() * 3)
-              switch (randomNumber) {
-                case 0:
-                    return 'ROCK'
-                case 1:
-                    return 'PAPER'
-                case 2:
-                    return 'SCISSORS'
-                }
 
-        }
-
-
-       function playRound() {
-        let playerSelection = prompt("Who will be your chosen denfender? Rock? Paper? Or maybe Scissors?").toUpperCase();
-       console.log("You have chosen " + playerSelection)
-       let computerSelection = getComputerChoice()
-       console.log(`the enemy has chosen ${computerSelection}`)
-       if (playerSelection === computerSelection) {
-        console.log(`The champions known as ${playerSelection} have fallen together ending in a tie`)
-        }
-        if (
-            (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
-            (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
-            (playerSelection === 'PAPER' && computerSelection === 'ROCK')
-        ) {
-            playerScore += 1;
-            console.log(`Your  ${playerSelection} annihilates ${computerSelection}!`)
-        }
-        if (
-            (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
-            (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
-            (computerSelection === 'PAPER' && playerSelection === 'ROCK')
-        ) {
-            computerScore += 1;
-            console.log(`Your champion ${playerSelection} has failed to beat ${computerSelection}!`)
-        }
-        console.log("Player: " + playerScore)
-        console.log("Computer: " + computerScore)
-       }
-       function playGame() {
-            
-            playRound();
-            playRound();
-            playRound();
-            playRound();
-            playRound();
-        
-        if (playerScore > computerScore) {
-            console.log("YOU WIN!")
-        } else if (computerScore > playerScore) {
-            console.log("You have failed to beat the computer.")
-        } else if (playerScore == computerScore) {
-            console.log("The game ends in a stalemate.")
-        }
-    }
-    playGame();
-    </script>
 </body>
 </html>
